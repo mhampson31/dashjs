@@ -1,5 +1,6 @@
 const express = require('express');
 const flash = require('connect-flash');
+const Service = require('../models/service');
 
 // require models
 
@@ -19,8 +20,13 @@ router.use((req, res, next) => {
 })
 
 router.get('/', async (req, res, next) => {
-    res.render('main', {
+    Service.find({})
+    .then((services) => {
+        res.render('main', {
+            services: services
+        })
     })
+
 });
 
 

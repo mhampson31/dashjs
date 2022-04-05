@@ -2,3 +2,6 @@ extends layout
 
 block content
     p Hello
+    each service in services
+        p #{service.name}
+        p #{service.url}
