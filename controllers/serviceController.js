@@ -8,8 +8,9 @@ class ServiceController {
             });
     }
 
-    static create(obj) {
-        const service = new Service(obj);
+    static create(new_service) {
+        console.log(new_service);
+        const service = new Service(new_service);
         return service.save();
     }
 
@@ -30,7 +31,7 @@ class ServiceController {
     }
 
     static delete(id) {
-        return Service.deleteOne({_id: id})
+        return Service.findOneAndDelete(id)
             .then((obj) => {
                 return obj;
             })
